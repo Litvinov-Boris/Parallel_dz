@@ -8,6 +8,7 @@ int main(int argc, char **argv)
 {
     int thread, thread_size, processor_name_length;
     char* processor_name = new char[MPI_MAX_PROCESSOR_NAME * sizeof(char)];
+    string name_output = argv[1];
     MPI_Status status;
     // Инициализируем работу MPI
 	MPI_Init(&argc, &argv);
@@ -15,6 +16,7 @@ int main(int argc, char **argv)
 	MPI_Get_processor_name(processor_name, &processor_name_length);
 	// Получаем номер конкретного процесса на котором запущена программа
 	MPI_Comm_rank(MPI_COMM_WORLD, &thread);
+    printf("t = %d, %s\n", thread, processor_name);
 	// Получаем количество запущенных процессов
 	MPI_Comm_size(MPI_COMM_WORLD, &thread_size);
     std::vector<detail> details;
@@ -94,7 +96,7 @@ int main(int argc, char **argv)
         end = clock();
         double seconds = (double)(end - start) / CLOCKS_PER_SEC;
         printf("Time %lf\n", seconds);
-        print_result(res, count_for_print);
+        print_result(res, count_for_print, name_output);
     }
     MPI_Finalize();
     return 0;

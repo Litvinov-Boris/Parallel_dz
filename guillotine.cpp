@@ -37,9 +37,9 @@ int read_order(int *w_map, int *l_map, std::vector<detail> *details)
     }
     return 0;
 }
-void print_result (int *res, int count_for_print)
+void print_result (int *res, int count_for_print, string name_output)
 {
-    std::ofstream out ("output", ios::out);
+    std::ofstream out (name_output, ios::out);
     out<<"площадь обрезков = "<<res[0]<<"\n";
     int i = 1;
     while (i < count_for_print)

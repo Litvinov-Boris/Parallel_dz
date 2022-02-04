@@ -48,4 +48,4 @@ public:
 void init_rem(int nx, int ny, int nw, int nl, remnant *rem);
 int q_metric (detail det, remnant rem); // выбор расположения детали (с / без поворота)
 int read_order(int *w_map, int *l_map, std::vector<detail> *details);
-void print_result (int *res, int count_for_print);
+void print_result (int *res, int count_for_print, string name_output);
